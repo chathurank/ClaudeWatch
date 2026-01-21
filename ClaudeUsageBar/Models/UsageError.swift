@@ -48,7 +48,7 @@ enum UsageError: Error, LocalizedError {
         case .networkError:
             return "Check your internet connection"
         case .apiError(let code, _):
-            if code == 401 {
+            if code == 401 || code == 403 {
                 return "Run 'claude' in Terminal to re-authenticate"
             } else if code == 429 {
                 return "Please wait before trying again"

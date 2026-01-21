@@ -24,7 +24,6 @@
 		CEBD0E8FAAD403124E0ECB7B /* UsageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86DCAD337E3CA637689190E /* UsageData.swift */; };
 		F612BE4750DE9AA0FA8F9373 /* MenuBarLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D0EB72A41EDB77B583DC2 /* MenuBarLabel.swift */; };
 		FB88B8E326B61802BEAD1594 /* UsagePopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7993C40613BECA35F2E3CE1 /* UsagePopoverView.swift */; };
-		FC87C6C9AF02C5E789AF0FC1 /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705FB877D84BA36A80AEBBA5 /* CertificatePinningDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +35,6 @@
 		45A0509A11B93F3F9E21C3F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6160C653F561E43761CCEB48 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		66650A6BEA4036AAB778B16D /* DisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMode.swift; sourceTree = "<group>"; };
-		705FB877D84BA36A80AEBBA5 /* CertificatePinningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinningDelegate.swift; sourceTree = "<group>"; };
 		72147F4C9708149D4EF321E6 /* UsageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageColor.swift; sourceTree = "<group>"; };
 		8A7D0EB72A41EDB77B583DC2 /* MenuBarLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarLabel.swift; sourceTree = "<group>"; };
 		8AE127C9075DD1E841A45D42 /* ClaudeUsageBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUsageBarApp.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				D524231731A5C43297C581D9 /* APIService.swift */,
-				705FB877D84BA36A80AEBBA5 /* CertificatePinningDelegate.swift */,
 				1DA68F4AFFE8EEB017CB5A8A /* KeychainService.swift */,
 				8BCF4B5AA85FB35B2E575842 /* PollingService.swift */,
 			);
@@ -227,7 +224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A967E456EB48B4A43BDC53C6 /* APIService.swift in Sources */,
-				FC87C6C9AF02C5E789AF0FC1 /* CertificatePinningDelegate.swift in Sources */,
 				9A0DD3E61D6D888EED96A3AF /* ClaudeUsageBarApp.swift in Sources */,
 				9B0082941CC4EB920B0B1C73 /* Credentials.swift in Sources */,
 				31358648547F3CF156719B47 /* DisplayMode.swift in Sources */,
