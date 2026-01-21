@@ -13,10 +13,7 @@ final class APIService {
     private let usageEndpoint = "/api/oauth/usage"
     private let userAgent = "ClaudeWatch/1.0"
 
-    /// Certificate pinning delegate for MITM protection
-    private let pinningDelegate = CertificatePinningDelegate()
-
-    /// Secure URLSession with ephemeral configuration and certificate pinning
+    /// Secure URLSession with ephemeral configuration (no caching, no cookies)
     private lazy var session: URLSession = {
         let config = URLSessionConfiguration.ephemeral
         config.urlCache = nil
@@ -25,7 +22,7 @@ final class APIService {
         config.httpShouldSetCookies = false
         config.timeoutIntervalForRequest = 15
         config.timeoutIntervalForResource = 30
-        return URLSession(configuration: config, delegate: pinningDelegate, delegateQueue: nil)
+        return URLSession(configuration: config)
     }()
 
     /// Rate limiting: minimum interval between requests

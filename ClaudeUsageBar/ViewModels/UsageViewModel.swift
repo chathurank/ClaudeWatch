@@ -173,11 +173,11 @@ final class UsageViewModel: ObservableObject {
             }
 
             // Extract non-sensitive display info
-            subscriptionTypeValue = creds.claudeAiOauth.subscriptionType.capitalized
-            rateLimitTierValue = creds.claudeAiOauth.rateLimitTier
+            subscriptionTypeValue = creds.claudeAiOauth.subscriptionType?.capitalized ?? "Pro"
+            rateLimitTierValue = creds.claudeAiOauth.rateLimitTier?
                 .replacingOccurrences(of: "default_claude_", with: "")
                 .replacingOccurrences(of: "_", with: " ")
-                .capitalized
+                .capitalized ?? "Standard"
 
             // Fetch usage data (token used only for this call, not stored)
             let usage = try await apiService.fetchUsage(accessToken: accessToken)
