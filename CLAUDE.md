@@ -67,15 +67,41 @@ ClaudeUsageBar/
 4. **Use defer for cleanup** - especially for clearing sensitive data
 5. **Prefer guard for early returns** - improves readability
 
-### Testing Checklist
-Before committing changes:
+### Pre-Commit Requirements (MANDATORY)
+Before EVERY commit, you MUST complete both the security audit and smoke test.
+
+#### Security Audit Checklist
+Run before every commit:
+1. **Token handling**: Verify no tokens are logged, stored, or exposed in error messages
+2. **Hardened runtime**: Confirm `ENABLE_HARDENED_RUNTIME: YES` in `project.yml`
+3. **Ephemeral session**: Verify URLSession uses ephemeral config with no caching
+4. **Input validation**: Check API response validation is in place
+5. **Error sanitization**: Verify error messages don't expose sensitive details
+6. **No secrets in code**: Search for hardcoded tokens/keys: `grep -r "sk-ant" ClaudeUsageBar/`
+7. **Memory clearing**: Verify tokens are overwritten after use with null bytes
+
+#### Smoke Test Checklist
+Run after every build:
 1. Clean build: `rm -rf build/ && ./scripts/build-and-package.sh`
-2. Test fresh launch with valid credentials
-3. Test with expired credentials (should show "Credentials have expired")
-4. Test with no credentials (should show "Claude Code credentials not found")
-5. Test retry button functionality
-6. Test quit button
-7. Verify no sensitive data in console logs
+2. Kill existing instances: `pkill -f "ClaudeWatch"`
+3. Launch fresh: `open "build/Release/ClaudeWatch.app"`
+4. **Test valid credentials**: Should show usage percentages
+5. **Test retry button**: Click retry, should show loading then result
+6. **Test refresh button**: Click refresh icon in header
+7. **Test quit button**: Should terminate app
+8. Verify no sensitive data in console: `log show --predicate 'subsystem == "com.claudewatch.app"' --last 5m`
+
+#### Quick Verification Commands
+```bash
+# Security check - search for potential token leaks
+grep -rn "accessToken\|refreshToken" ClaudeUsageBar/ | grep -v "let \|var \|\.accessToken\|\.refreshToken"
+
+# Verify hardened runtime
+grep -A1 "ENABLE_HARDENED_RUNTIME" project.yml
+
+# Verify ephemeral session
+grep -A5 "URLSessionConfiguration" ClaudeUsageBar/Services/APIService.swift
+```
 
 ## Architecture
 
