@@ -7,7 +7,7 @@
     <meta name="description" content="Native macOS menu bar app that displays your Claude Code subscription usage. Track 5-hour and 7-day limits with color-coded percentages.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #D97706;
@@ -31,11 +31,11 @@
         }
 
         body {
-            font-family: 'Cormorant', Georgia, 'Times New Roman', serif;
+            font-family: 'Sorts Mill Goudy', Georgia, 'Times New Roman', serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
-            font-size: 18px;
+            line-height: 1.75;
+            font-size: 20px;
         }
 
         .container {
@@ -60,8 +60,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600;
-            font-size: 1.25rem;
+            font-weight: 400;
+            font-size: 1.5rem;
             color: var(--text);
             text-decoration: none;
         }
@@ -95,7 +95,7 @@
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             transition: color 0.2s;
         }
 
@@ -117,20 +117,20 @@
 
         .badge {
             display: inline-block;
-            padding: 6px 12px;
+            padding: 8px 16px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 24px;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            margin-bottom: 28px;
             background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -138,10 +138,10 @@
         }
 
         .hero p {
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             color: var(--text-muted);
-            max-width: 620px;
-            margin: 0 auto 40px;
+            max-width: 650px;
+            margin: 0 auto 44px;
             font-weight: 400;
         }
 
@@ -155,11 +155,11 @@
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
+            gap: 10px;
+            padding: 16px 32px;
             border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.15rem;
+            font-weight: 400;
             text-decoration: none;
             transition: all 0.2s;
         }
@@ -220,9 +220,9 @@
 
         .features h2 {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 48px;
+            font-size: 2.75rem;
+            font-weight: 400;
+            margin-bottom: 52px;
         }
 
         .features-grid {
@@ -257,14 +257,14 @@
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         /* Color coding */
@@ -275,9 +275,9 @@
 
         .color-section h2 {
             text-align: center;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 32px;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 36px;
         }
 
         .color-legend {
@@ -306,7 +306,7 @@
 
         .color-item span {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 1.1rem;
         }
 
         /* Installation */
@@ -317,9 +317,9 @@
 
         .installation h2 {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 48px;
+            font-size: 2.75rem;
+            font-weight: 400;
+            margin-bottom: 52px;
         }
 
         .steps {
@@ -346,20 +346,21 @@
         }
 
         .step-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 4px;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 6px;
         }
 
         .step-content p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
         }
 
         .step-content code {
             background: var(--bg-card);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* Requirements */
@@ -377,8 +378,9 @@
         }
 
         .requirements-box h3 {
-            font-size: 1rem;
-            margin-bottom: 16px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 18px;
             color: var(--text-muted);
         }
 
@@ -408,7 +410,7 @@
 
         footer p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 1.1rem;
         }
 
         footer a {
@@ -423,11 +425,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.75rem;
+                font-size: 3rem;
             }
 
             .hero p {
-                font-size: 1.15rem;
+                font-size: 1.25rem;
             }
 
             .nav-links span {
