@@ -11,13 +11,16 @@ struct UsagePopoverView: View {
             Divider()
 
             // Content
-            if let error = viewModel.error {
+            if viewModel.isLoading {
+                LoadingView()
+            } else if let error = viewModel.error {
                 ErrorStateView(error: error) {
                     Task { await viewModel.retryAfterError() }
                 }
             } else if viewModel.usageData != nil {
                 usageContentView
-            } else if viewModel.isLoading {
+            } else {
+                // Fallback: show loading if no other state
                 LoadingView()
             }
 

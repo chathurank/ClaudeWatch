@@ -127,23 +127,8 @@ final class APIService {
             )
         }
 
-        // Reset dates should be in the future (with some tolerance for clock skew)
-        let toleranceInterval: TimeInterval = -60 // Allow 1 minute in the past
-        let minimumValidDate = Date().addingTimeInterval(toleranceInterval)
-
-        guard usage.fiveHour.resetsAt > minimumValidDate else {
-            throw ValidationError.invalidResetDate(
-                field: "five_hour.resets_at",
-                date: usage.fiveHour.resetsAt
-            )
-        }
-
-        guard usage.sevenDay.resetsAt > minimumValidDate else {
-            throw ValidationError.invalidResetDate(
-                field: "seven_day.resets_at",
-                date: usage.sevenDay.resetsAt
-            )
-        }
+        // Note: Reset dates are not validated as they may be in the past
+        // if the user has hit their limit. They're just for display purposes.
     }
 
     /// Resets rate limit backoff state (call after successful credential refresh)

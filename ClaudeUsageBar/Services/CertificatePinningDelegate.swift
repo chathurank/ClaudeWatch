@@ -32,16 +32,16 @@ final class CertificatePinningDelegate: NSObject, URLSessionDelegate {
     ///   openssl pkey -pubin -outform DER 2>/dev/null | openssl dgst -sha256 -binary | base64
     /// ```
     private let pinnedPublicKeyHashes: Set<String> = [
-        // Cloudflare Inc ECC CA-3 (intermediate)
+        // Google Trust Services WE1 (current intermediate for api.anthropic.com)
+        "dlJe145OFRVi3s8R63aTImXFgAv9B3lNJJcd0M3JjJk=",
+        // Google Trust Services GTS Root R4
+        "CLOmM1/OXvSPjw5UOYbAf9GKOxImEp9hhku9W90fHMk=",
+        // GlobalSign Root CA (cross-signed root)
+        "cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A=",
+        // Cloudflare Inc ECC CA-3 (backup - previous intermediate)
         "Fo9FLlk/vfS8ROs9EDRgYMIPVlprGMIuC5FNAtoSEko=",
-        // DigiCert Global Root CA (root)
-        "i7WTqTvh0OioIruIfFR4kMPnBqrS2rdiVPl/s2uC/CY=",
-        // Baltimore CyberTrust Root (backup root)
-        "Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o=",
-        // DigiCert Global Root G2 (additional root)
-        "cb3ccbb76031e5e0138f8dd39a23f9de47ffc35e43c1144cea27d46a5ab1cb5f",
-        // Cloudflare Origin CA (backup)
-        "PbMGAwhNgz2p1zOVqFLAGCNw/IxQJwpahK3/gXPBANQ="
+        // DigiCert Global Root CA (backup root)
+        "i7WTqTvh0OioIruIfFR4kMPnBqrS2rdiVPl/s2uC/CY="
     ]
 
     /// The hostname we expect to connect to

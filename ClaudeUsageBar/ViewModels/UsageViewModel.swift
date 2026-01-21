@@ -214,6 +214,9 @@ final class UsageViewModel: ObservableObject {
     }
 
     func retryAfterError() async {
+        // Set loading state immediately to show loading view
+        // before clearing error (prevents blank state)
+        isLoading = true
         error = nil
         await refreshUsage()
     }
