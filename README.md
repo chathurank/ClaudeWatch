@@ -1,5 +1,7 @@
 # Claude Usage Bar
 
+[![Built with Claude](https://img.shields.io/badge/Built%20with-Claude-cc785c?style=flat&logo=anthropic&logoColor=white)](https://claude.ai)
+
 A native macOS menu bar utility that displays your Claude Code subscription usage.
 
 ## Features
