@@ -114,8 +114,18 @@
 
         /* Hero */
         .hero {
-            padding: 80px 0 60px;
-            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
         }
 
         .badge {
@@ -130,10 +140,10 @@
         }
 
         h1 {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 400;
             letter-spacing: 0;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -141,18 +151,38 @@
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 44px;
+            margin: 0 0 36px;
             font-weight: 400;
         }
 
         .cta-buttons {
             display: flex;
             gap: 16px;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
+        }
+
+        .hero-screenshot {
+            position: relative;
+        }
+
+        .hero-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .hero-screenshot .screenshot-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .btn {
@@ -186,33 +216,6 @@
         .btn-secondary:hover {
             background: var(--bg-card-hover);
             transform: translateY(-2px);
-        }
-
-        /* Screenshot */
-        .screenshot-section {
-            padding: 40px 0 80px;
-        }
-
-        .screenshot-wrapper {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .screenshot {
-            width: 100%;
-        }
-
-        .screenshot-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(ellipse, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
         }
 
         /* Features */
@@ -426,7 +429,20 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
             h1 {
                 font-size: 3rem;
             }
@@ -434,7 +450,9 @@
             .hero p {
                 font-size: 1.25rem;
             }
+        }
 
+        @media (max-width: 768px) {
             .nav-links span {
                 display: none;
             }
@@ -470,30 +488,29 @@
     <main>
         <section class="hero">
             <div class="container">
-                <div class="badge">macOS Menu Bar App</div>
-                <h1>Monitor Your Claude Usage</h1>
-                <p>Native macOS menu bar app that displays your Claude Code subscription usage at a glance. Track limits, see reset times, stay informed.</p>
-                <div class="cta-buttons">
-                    <a href="https://github.com/chathurank/ClaudeWatch/releases/latest/download/ClaudeWatch-1.0.0.dmg" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        Download for macOS
-                    </a>
-                    <a href="https://github.com/chathurank/ClaudeWatch" class="btn btn-secondary">
-                        View on GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="screenshot-section">
-            <div class="container">
-                <div class="screenshot-wrapper">
-                    <div class="screenshot-glow"></div>
-                    <img src="screenshot.png" alt="ClaudeWatch Screenshot" class="screenshot">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="badge">macOS Menu Bar App</div>
+                        <h1>Monitor Your Claude Usage</h1>
+                        <p>Native macOS menu bar app that displays your Claude Code subscription usage at a glance. Track limits, see reset times, stay informed.</p>
+                        <div class="cta-buttons">
+                            <a href="https://github.com/chathurank/ClaudeWatch/releases/latest/download/ClaudeWatch-1.0.0.dmg" class="btn btn-primary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Download for macOS
+                            </a>
+                            <a href="https://github.com/chathurank/ClaudeWatch" class="btn btn-secondary">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-screenshot">
+                        <div class="screenshot-glow"></div>
+                        <img src="screenshot.png" alt="ClaudeWatch Screenshot">
+                    </div>
                 </div>
             </div>
         </section>
