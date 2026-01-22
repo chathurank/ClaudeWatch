@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UsagePopoverView: View {
     @ObservedObject var viewModel: UsageViewModel
+    var onShowSetupGuide: (() -> Void)?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -14,9 +15,11 @@ struct UsagePopoverView: View {
             if viewModel.isLoading {
                 LoadingView()
             } else if let error = viewModel.error {
-                ErrorStateView(error: error) {
-                    Task { await viewModel.retryAfterError() }
-                }
+                ErrorStateView(
+                    error: error,
+                    onRetry: { Task { await viewModel.retryAfterError() } },
+                    onShowSetupGuide: onShowSetupGuide
+                )
             } else if viewModel.usageData != nil {
                 usageContentView
             } else {

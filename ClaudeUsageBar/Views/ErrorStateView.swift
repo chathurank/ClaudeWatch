@@ -3,6 +3,7 @@ import SwiftUI
 struct ErrorStateView: View {
     let error: UsageError
     let onRetry: () -> Void
+    var onShowSetupGuide: (() -> Void)?
 
     var body: some View {
         VStack(spacing: 12) {
@@ -21,11 +22,22 @@ struct ErrorStateView: View {
                     .multilineTextAlignment(.center)
             }
 
-            Button("Retry") {
-                onRetry()
+            VStack(spacing: 8) {
+                Button("Retry") {
+                    onRetry()
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+
+                // Show setup guide button for credential-related errors
+                if showSetupGuideButton, let onShowSetupGuide = onShowSetupGuide {
+                    Button("Setup Guide") {
+                        onShowSetupGuide()
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.small)
         }
         .padding()
     }
@@ -40,6 +52,20 @@ struct ErrorStateView: View {
             return "exclamationmark.icloud"
         default:
             return "exclamationmark.triangle"
+        }
+    }
+
+    /// Determines if the setup guide button should be shown
+    private var showSetupGuideButton: Bool {
+        switch error {
+        case .credentialsNotFound, .credentialsExpired, .credentialsInvalid:
+            return true
+        case .apiError(let code, _) where code == 401 || code == 403:
+            return true
+        case .authError:
+            return true
+        default:
+            return false
         }
     }
 }
